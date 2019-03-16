@@ -1,49 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Teen ager provides dog walking in Flagstaff Arizona">
-  <meta name="keywords" content="dog walking">
-  <meta name="author" content="Sheena Jessee">
-  <title>Puppy Palz Dog Walking</title>  
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="description" content="Teen ager provides dog walking in Flagstaff Arizona">
+     <meta name="keywords" content="dog walking">
+     <meta name="author" content="Sheena Jessee">
+     <title>Puppy Palz Dog Walking</title>  
+     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+     <script src="scripts/script.js"></script>
+     <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 
 <body>
- <header>
+   <header>
+      <div id="title">
+         <h1> Puppy Palz</h1>
+	     <h3> Dog walking and Pet sitting </h3>
+	 </div>
 
- </header>
-    <main>
-	<img src="image/dog.jpg" alt="person walking a dog"/>
-	<h1> Puppy Palz Dog Walking</h1>
-	<div id="dropdownMenu">
-	    <ul> 
-		<li id="login">Login to account </li>
-		<li id="about">About Me </li>
-		<li id="faq">FAQ </li>
-		<li class="usersOnly" id="rates"> Rates </li>
-		<li class="usersOnly" id="setUp"> Set Up Walking Appointment</li>
-		<li class="usersOnly" id="cat"> Cat sitting </li>
-		<li class="usersOnly" id="dogSit"> Dog Sitting </li>
+	 <div id="dropDownMenu">
+	     <ul id="menuList"> 
+		    <li id="menu">Menu</li>
+		    <li class="listItems" id="login">Login/Register</li>
+		    <li class="listItems" id="about">About Me </li>
+		    <li class="listItems" id="faq">FAQ </li>		  
+		    <li class="usersOnly listItems" id="rates"> Rates </li>
+		    <li class="usersOnly listItems" id="setUp"> Set Up Walking Appointment</li>
+		    <li class="usersOnly listItems" id="cat"> Cat sitting </li>
+		    <li class="usersOnly listItems" id="dogSit"> Dog Sitting </li>
 
 		</ul>
 	</div>
-        <form action="/getRate" method="get">
-		    <label for="weight">Weight of item to be shipped in oz </label>
-            <input type="number" step="0.01" id="weight" name="weight">			
-            <select name="postType">
-                <option value="stamped">Letters (stamped)</option>
-                <option value="metered">Letters (metered)</option>
-                <option value="flats">Large Envelopes (flats)</option>
-                <option value="package">First-Class Package Service Retail</option>
-            </select>
-            <input type="submit" name="submit" value="Submit">
+ </header>
+ <main>
+	<div id="mainImgDiv">
+	   <img src="image/dog.jpg" id="mainImg" alt="person walking a dog"/>
+	</div>
+	<div id="CreateAccount">
+	   <div id="styleAccount">
+	      <div id="create">
+	         <h1>create Account</h1>
+            <form id="userForm" action="/createUser" method="get">
+		       <div class="items">
+		          <label for="name">First and Last Name </label>
+                  <input type="text"  id="name" name="name">	
+		       </div>
+			
+	           <div class="items">
+			      <label for="username">Username</label>
+                  <input type="text" id="username" name="username">
+		       </div>
+
+		       <div class="items">
+			      <label for="password">Password</label>
+			      <input type="password" id="password" name="password">
+		       </div>
+
+		       <div class="items">
+			      <label for="email">Email</label>
+			      <input type="email" id="email" name="email">
+		       </div>
+
+		       <div class="items">
+                  <label for="address">Address</label>
+			      <textarea id="address" name="address"> </textarea>	
+		       </div>
+
+	           <div class="items">
+			      <label for="petName">Pets Name </label>
+			      <input type="text" id="petName" name="petName">
+		       </div>
+
+		       <div class="items">
+			      <label for="breed">Dog Breed</label>
+			      <input type="text" id="breed" name="breed">
+		       </div>
+
+		       <div class="items">
+			      <h3>Dog Size </h3>
+			      <input type="radio" id="size1" name="size" value="small">		
+		          <label for="size">Small </label>
+			
+			      <input type="radio" id="size2" name="size" value="medium">
+			      <label for="size2">Medium</label>
+			
+			      <input type="radio" id="size3" name="size" value="large">			
+			      <label for="size3">Large </label>
+		        </div>
+
+		        <div class="items">
+			      <label for="comments">Tell Me Your Pet's Needs</label><br>
+			      <textarea id="comments" name="comments" cols="30" rows="10"></textarea>
+		        </div>
+
+                <button type="submit" name="submit" value="Submit"> Add My Info </button>
             
-        </form>
-        
-    </main>
+            </form>
+	     </div>
+	     <div id="petCollage">
+	        <img src="image/dog3.jpg" id="dogImg3" alt="a dog"/>
+	        <img src="image/cat1.jpg" id="catImg1" alt="a cat"/>
+	        <img src="image/cat2.jpg" id="catImg2" alt="a cat"/>
+	        <img src="image/dog1.jpg" id="dogImg1" alt="a dog"/>
+	        <img src="image/dog2.jpg" id="dogImg2" alt="a dog"/>
+	     </div>
+     </div>
+   </div>
+</main>
 
 </body>
 
