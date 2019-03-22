@@ -68,5 +68,16 @@ header {
 #create {
     justify-self: center;
     border: 1px solid #3f3b38;
-    padding: 0em 3em;
+    padding: 0em 2em;
+}
+#loginDisplay {
+    display:grid;
+}
+#register {
+    display: none;
+}
+#login {
+    justify-self: center;
+    border: 1px solid #3f3b38;
+    padding: 1em 1em;
 }

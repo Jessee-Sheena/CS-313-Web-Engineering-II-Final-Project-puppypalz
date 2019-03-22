@@ -5,7 +5,7 @@ $(document).ready(function () {
 	$(".listItems").click(function (event) {
 		var view = event.target.id;
 		switch (view) {
-			case "login":
+			case "loginUser":
 				$('#mainImgDiv').hide();
 				$('#createAccount').show();
 
@@ -25,7 +25,7 @@ $(document).ready(function () {
 });
 
 /********************************************************
- * submit form
+ * submit registration form
  *******************************************************/
 $(function () {
 	$('#userForm').submit(function (event) {
@@ -37,9 +37,40 @@ $(function () {
 			data: form.serialize()
 		}).done(function (data) {
 			console.log(data);
+
 			
 		}).fail(function (data) {
 			alert("form failed");
 		});
+	});
+});
+/********************************************************
+ * submit login form
+ *******************************************************/
+$(function () {
+	$('#loginForm').submit(function (event) {
+		event.preventDefault();
+		var form = $(this);
+		$.ajax({
+			type: form.attr('method'),
+			url: form.attr('action'),
+			data: form.serialize()
+		}).done(function (data) {
+			console.log(data);
+
+
+		}).fail(function (data) {
+			alert("form failed");
+		});
+	});
+});
+
+/********************************************************
+ * get to registration page
+ *******************************************************/
+$(function () {
+	$('#registration').click(function () {
+		$('#loginDisplay').hide();
+		$('#register').show();
 	});
 });
