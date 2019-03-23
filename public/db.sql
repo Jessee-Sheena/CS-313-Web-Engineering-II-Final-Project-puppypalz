@@ -14,5 +14,14 @@ dog_breed VARCHAR(80),
 dog_needs TEXT,
 dog_owner INT REFERENCES person(id)
 );
-INSERT INTO person(user_name, email, user_password, user_address, person_username)
-VALUES ('user_name'
+
+CREATE TABLE event (
+id SERIAL NOT NULL PRIMARY KEY,
+title VARCHAR(80),
+url VARCHAR(80),
+class VARCHAR(80),
+start float,
+end float,
+dog_id INT REFERENCES person(id),
+person_id INT REFERENCES person(id)
+);

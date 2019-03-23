@@ -21,14 +21,10 @@
 
         <div id="dropDownMenu">
             <ul id="menuList">
-                <li id="menu">Menu</li>
+                <!--<li id="menu">Menu</li>-->
                 <li class="listItems" id="loginUser">Login/Register</li>
                 <li class="listItems" id="about">About Me </li>
-                <li class="listItems" id="faq">FAQ </li>
-                <li class="usersOnly listItems" id="rates"> Rates </li>
-                <li class="usersOnly listItems" id="setUp"> Set Up Walking Appointment</li>
-                <li class="usersOnly listItems" id="cat"> Cat sitting </li>
-                <li class="usersOnly listItems" id="dogSit"> Dog Sitting </li>
+                <li class="listItems" id="faq">FAQ </li>                
 
             </ul>
         </div>
@@ -38,7 +34,7 @@
             <img src="image/dog.jpg" id="mainImg" alt="person walking a dog" />
         </div>
 
-        <div id="CreateAccount">
+        <div id="createAccount">
             <div id="styleAccount">
                 <div id="loginDisplay">
                     <div id="login">
@@ -53,7 +49,9 @@
 							</div>
                             <button type="submit" id="loginButton">Login</button>
                             <button type="button" id="registration">Create New Account</button>
-                        </form>
+							<div id="validationLogin">
+							</div>
+						</form>
                     </div>
                 </div>
                 <div id="register">
@@ -98,7 +96,7 @@
                             <div class="items">
                                 <h3>Dog Size </h3>
                                 <input type="radio" id="size1" name="size" value="small">
-                                <label for="size">Small </label>
+                                <label for="size1">Small </label>
 
                                 <input type="radio" id="size2" name="size" value="medium">
                                 <label for="size2">Medium</label>

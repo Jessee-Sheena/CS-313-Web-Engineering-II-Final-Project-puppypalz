@@ -14,7 +14,6 @@ function insertUser(name, email, password, address, username, petName, breed, si
 		}
 		else {
 			var id = result.rows[0].id;
-			console.log(id);
 			
 			insertDog(petName, breed, size, needs, id, function (err, details) { });
 			callback(null, result);
@@ -31,7 +30,7 @@ function insertDog(petName, breed, size, needs, personId, callback) {
 			console.log(err);
 		}
 		else {
-			console.log("success!")
+			
 			callback(null, result);
 		}
 	});
@@ -44,13 +43,29 @@ function validateUser(username, callback) {
 			console.log(err);
 		}
 		else {
-			console.log("success!")
+			
 			callback(null, result);
 		}
 	});
 }
+function getEvents(callback) {
+	query = "SELECT id, title, event_url as url, class,  event_start as start, event_end as end FROM event;"
+	pool.query(query, function (err, result) {
+		if (err) {
+			console.log("Error in query: ");
+			console.log(err);
+		} else {
+			
+			callback(null, result);
+		}
+
+		
+	})
+
+}
 module.exports = {
 	insertUser: insertUser,
 	insertDog: insertDog,
-	validateUser: validateUser
+	validateUser: validateUser,
+	getEvents: getEvents
 };
