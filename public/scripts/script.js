@@ -1,3 +1,4 @@
+
 /***************************************************
  * Toggle between the "pages" in the app
  *************************************************/
@@ -16,7 +17,10 @@ $(document).ready(function () {
 				break;
 			case "setUp":
 				$('#mainImgDiv').hide();
-				getCalendar();
+				$('#setAppointment').show();
+				$('#appointmentForm').hide();
+				$('#calendar').show();
+				getCalendar('month');
 				break;
 			case "cat":
 				break;
@@ -41,7 +45,7 @@ $(function () {
 			data: form.serialize()
 		}).done(function (data) {
 			console.log(data);
-
+			window.location.href = '/';
 			
 		}).fail(function (data) {
 			alert("form failed");
@@ -90,73 +94,50 @@ $(function () {
 /********************************************************
  * calendar
  *******************************************************/
-function getCalendar() {
+function getCalendar(calendarView) {
 
 	var calendar = $("#calendar").calendar(
 		{
 			tmpl_path: "../bower_components/bootstrap-calendar/tmpls/",
-			view: "month",
+			view: calendarView,
+			width: '95%',
 			format12: true,
 			time_start: "16:00",
 			time_end: '18:00',
-			events_source: [
-				{
-					"id": 2,
-					"title": "walking tess",
-					"url": "/event",
-					"class": "event_important",
-					"start": 1553369673299,
-					"end": 1553369700840
-				},
-				{
-					"id": 3,
-					"title": "walking bob",
-					"url": "/event",
-					"class": "event_important",
-					"start": 1553370020146,
-					"end": 1553370073234
-				},
-				{
-					"id": 4,
-					"title": "walking bob",
-					"url": "/event",
-					"class": "event_important",
-					"start": 1553370020146,
-					"end": 1553370073234
-				}]
+			events_source: '/event'
 		})	
-
-}
-function readData(data) {
 	
 
-	var array = [];
+}
 
-	for (var i = 0; i < data.length; i++) {
-		
-		var temp = {
-			"id": data[i].id,
-			"title": data[i].title,
-			"url": data[i].url,
-			"class": data[i].class,
-			"start": data[i].start,
-			"end" : data[i].end
+/***************************************************
+ * set appointment buttons
+ *************************************************/
+$(document).ready(function () {
+	$(".setButtons").click(function (event) {
+		var view = event.target.id;
+		switch (view) {
+			
+			case "schedule":
+				$('#appointmentForm').show();
+				$('#calendar').hide();
+				break;
+			case "month":
+				$('#appointmentForm').hide();
+				$('#calendar').show();
+				getCalendar("month");
+				break;
+			case "week":
+				$('#appointmentForm').hide();
+				$('#calendar').show();
+				getCalendar("week");				
+				break;
+			case "day":
+				$('#appointmentForm').hide();
+				$('#calendar').show();
+				getCalendar("day");
+				break;
+			
 		}
-		array.push(temp);
-	}
-	
-	return array;
-}
-/*function () {
-	$.ajax({
-		type: 'get',
-		url: '/event',
-
-	}).done(function (data) {
-		console.log(readData(data));
-		return readData(data);
-
-	}).fail(function (data) {
-		alert("form failed");
 	});
-}*/
+});

@@ -46,9 +46,44 @@
         <div id="mainImgDiv">
             <img src="image/dog.jpg" id="mainImg" alt="person walking a dog" />
         </div>
-		<div id="calendar"></div>
-		
+		<div id="setAppointment">
+		   <div id="appointmentContainer">    
 
+		      <div id="calendarContainer">
+			      <h2>Chloe's Dog Walking Appointment Schedular</h2>
+			      <button class ="setButtons" id="schedule" type="button">Schedule Appointment</button>
+			      <button class ="setButtons" id="month" type="button">Monthly View</button>
+			      <button class ="setButtons" id="week" type="button">Weekly View</button>
+			      <button class ="setButtons" id="day" type="button">Daily View</button>
+				  <div id="appointmentForm">
+			        <form action="/insertEvent" method="post">
+			           <h3>Select Date For Walk</h3>					  
+			           <input type="date" id="date" name="date">
+					   <h3>Select the time of the walk</h3>
+			           <input type="radio" id="time1" name="time" value="4:00">
+			           <label for="time1">4:00 - 4:25</label>
+			           <input type="radio" id="time2" name="time" value="4:30">
+			           <label for="time1">4:30 - 4:55</label>
+			           <input type="radio" id="time3" name="time" value="5:00">
+			           <label for="time1">5:00 - 5:25</label><br>
+					   <button type="submit">Schedule Walk</button>
+			     </form>
+			  </div>
+		         <div id="calendar"></div>
+		      </div>
+			 
+			  <div id="petContainer">
+		         <div id="petCollage">
+                    <img src="image/dog3.jpg" id="dogImg3" alt="a dog" />
+                    <img src="image/cat1.jpg" id="catImg1" alt="a cat" />
+                    <img src="image/cat2.jpg" id="catImg2" alt="a cat" />
+                    <img src="image/dog1.jpg" id="dogImg1" alt="a dog" />
+                    <img src="image/dog2.jpg" id="dogImg2" alt="a dog" />
+					</div>
+              </div>
+           </div>    
+       </div>
+	   
        
     </main>
 

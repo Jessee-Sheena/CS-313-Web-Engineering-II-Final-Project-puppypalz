@@ -81,3 +81,13 @@ header {
     border: 1px solid #3f3b38;
     padding: 1em 1em;
 }
+#setAppointment {
+    display:none;
+}
+#appointmentContainer {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+}
+#appointmentForm {
+    display: none;
+}

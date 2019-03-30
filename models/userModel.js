@@ -36,7 +36,7 @@ function insertDog(petName, breed, size, needs, personId, callback) {
 	});
 }
 function validateUser(username, callback) {
-	query = "SELECT user_name, user_password FROM person WHERE person_username ='" + username + "';";
+	query = "SELECT id, user_name, user_password FROM person WHERE person_username ='" + username + "';";
 	pool.query(query, function (err, result) {
 		if (err) {
 			console.log("Error in query: ");
@@ -63,9 +63,52 @@ function getEvents(callback) {
 	})
 
 }
+function insertEvent(start, end, id, callback) {
+	
+	
+	var event_url = '';
+	var event_class = "event_important";
+	query = "SELECT id, dog_name FROM dog WHERE dog_owner='" + id + "';";
+	pool.query(query, function (err, result) {
+		if (err) {
+			console.log("Error in query: ");
+			console.log(err);
+		}
+		else {
+			var dog_id = result.rows[0].id;
+			console.log(dog_id);
+
+			var dog_name = result.rows[0].dog_name;
+			console.log(dog_name);
+			var title = "walking " + dog_name;
+			insertTheEvent(title, event_url, event_class, start, end, id, dog_id, function (err, result) { });
+			callback(null, result);
+			
+		}
+
+	});	
+
+}
+function insertTheEvent(title, event_url, event_class, start, end, id, dog_id, callback) {
+	query = "INSERT INTO  event(title, event_url, class, event_start, event_end, person_id, dog_id) VALUES ('" + title + "', '" + event_url + "', '" + event_class + "', '" + start + "', '" + end + "', '" + id + "', '" + dog_id + "');";
+
+	pool.query(query, function (err, result) {
+		if (err) {
+			console.log("Error in query: ");
+			console.log(err);
+		}
+		else {
+				console.log("query was successful")		
+			callback(null, result);
+		}
+
+	});
+
+}
 module.exports = {
 	insertUser: insertUser,
 	insertDog: insertDog,
 	validateUser: validateUser,
-	getEvents: getEvents
+	getEvents: getEvents,
+	insertEvent: insertEvent
 };

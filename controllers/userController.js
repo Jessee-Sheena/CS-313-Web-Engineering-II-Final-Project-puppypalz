@@ -30,6 +30,7 @@ router.get('/login', function(req, res) {
 		} else {
 			if (password == results.rows[0].user_password) {
 				sess.username = username;
+				sess.userId = results.rows[0].id;
 				loginStatus = true;
 				res.send(loginStatus);
 
@@ -46,34 +47,17 @@ router.get('/login', function(req, res) {
 router.get('/event', function (req, res) {
 	userModel.getEvents(function (err, result) {
 		var sending = [];
-		var from = req.query.from;
-		var to = req.query.to;
-		console.log(from);
-		console.log(to);
-		/*for (var i = 0; i < result.rows.length; i++) {
-
-			var temp = {
-				"id": result[i].rows.id,
-				"title": result[i].rows.title,
-				"url": result[i].rows.url,
-				"class": result[i].rows.class,
-				"start": result[i].rows.start,
-				"end": result[i].rows.end
-			}*/
-	   sending['result']= result.rows;
+				
+		sending = {
+			"success": 1,
+			"result": result.rows
+		}			
 		
-
-
-		var eventJSON = JSON.stringify(sending);
-		console.log(eventJSON);
-
-		console.log("Results from DB: ");
-		
-
-		res.send(sending['result']);
+		res.send(sending);
 	});
 });
 router.post('/createUser', function (req, res) {
+	sess.req.session;
 	console.log("you made it here");
 	var name = req.body.name;
 	var email = req.body.email;
@@ -84,12 +68,37 @@ router.post('/createUser', function (req, res) {
 	var breed = req.body.breed;
 	var size = req.body.size;
 	var needs = req.body.comments;
-	userModel.insertUser(name, email, password, address, username, petName, breed, size, needs, function (err, results) {
-		res.send(name)
-		console.log(results);
+	userModel.insertUser(name, email, password, address, username, petName, breed, size, needs, function (err, result) {
+		sess.userId = result.rows[0].id;
+		sess.username = username;
+		sess.name = name;
+		
+		
+		
 	});
+	
 }
+	
 );
+router.post('/insertEvent', function (req, res) {
+	sess = req.session;
+	var day = req.body.date;	
+	var time = req.body.time;
+	
+	var date = day + " " + time;
+	console.log(date);
+	var d = new Date(date);	
+	var start = d.getTime();
+	var endDate = d.setMinutes(d.getMinutes() + 25);
+	console.log(endDate);
+	
+	var end = endDate;
+	var id = sess.userId;	
+	userModel.insertEvent(start, end, id, function (err, results) {
+		res.redirect('/admin');
+	})
+
+});
 
 
 module.exports = router;
