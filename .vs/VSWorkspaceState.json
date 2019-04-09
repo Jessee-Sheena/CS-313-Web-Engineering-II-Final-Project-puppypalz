@@ -4,13 +4,11 @@
     "\\controllers",
     "\\models",
     "\\public",
-    "\\public\\bower_components",
-    "\\public\\bower_components\\bootstrap-calendar",
-    "\\public\\bower_components\\bootstrap-calendar\\css",
-    "\\public\\bower_components\\bootstrap-calendar\\js",
+    "\\public\\scripts",
+    "\\public\\stylesheets",
     "\\views",
     "\\views\\pages"
   ],
-  "SelectedNode": "\\controllers\\userController.js",
+  "SelectedNode": "\\Procfile",
   "PreviewInSolutionExplorer": false
 }

@@ -46,11 +46,11 @@ header {
     display: grid;
     grid-template-columns: 40% 1fr;
 }
-#petCollage {
+.petCollage {
     display:grid;
     grid-template-columns: 50% 1fr 1fr;
 }
-    #petCollage img {
+    .petCollage img {
         max-width: 100%;
         background-size: cover;
     }
@@ -81,6 +81,12 @@ header {
     border: 1px solid #3f3b38;
     padding: 1em 1em;
 }
+#loginForm input{
+     margin: .5em;
+}
+#userForm input{
+    margin: .5em;
+}
 #setAppointment {
     display:none;
 }
@@ -89,5 +95,34 @@ header {
     grid-template-columns: 1fr 1fr;
 }
 #appointmentForm {
+    display: none;
+}
+#aboutMe {
+    display: none;
+}
+#aboutMeContainer {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+#aboutMeInfo {
+    padding: 0em 1em;
+}
+#faqs {
+    display:none;
+}
+#faqsContianer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#theFaqs {
+    padding-left: 2em;
+   
+}
+#validateEvent {
+    padding: 1em;
+    font-size: 1.2em;
+    color: red;
+}
+#cancelAppointment {
     display: none;
 }

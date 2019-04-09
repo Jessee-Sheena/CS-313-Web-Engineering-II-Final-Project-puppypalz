@@ -44,6 +44,19 @@ router.get('/login', function(req, res) {
 		
 	});
 });
+router.get('/signOut', function (req, res) {
+	sess = req.session;
+	req.session.destroy(function (err) {
+		if (err) {
+			console.log(err);
+		} else {
+		
+			//req.end();
+			res.redirect('/');
+		}
+	});
+	
+});
 router.get('/event', function (req, res) {
 	userModel.getEvents(function (err, result) {
 		var sending = [];
@@ -82,23 +95,48 @@ router.post('/createUser', function (req, res) {
 );
 router.post('/insertEvent', function (req, res) {
 	sess = req.session;
-	var day = req.body.date;	
+	var day = req.body.date;
 	var time = req.body.time;
-	
-	var date = day + " " + time;
-	console.log(date);
-	var d = new Date(date);	
+	var date = day + " " + time;	
+	var d = new Date(date);
 	var start = d.getTime();
 	var endDate = d.setMinutes(d.getMinutes() + 25);
-	console.log(endDate);
-	
+
 	var end = endDate;
-	var id = sess.userId;	
-	userModel.insertEvent(start, end, id, function (err, results) {
-		res.redirect('/admin');
+	var id = sess.userId;
+	userModel.validateEvent(start, function (err, result) {
+		if (result.rowCount == 0) {
+			userModel.insertEvent(start, end, id, function (err, results) { });
+			res.send(true);
+		} else {
+			res.send(false);
+		}
+
 	})
 
+
 });
+router.post('/deleteEvent', function (req, res) {
+	sess = req.session;
+	var day = req.body.date;
+	var time = req.body.time;
+	var date = day + " " + time;
+	var d = new Date(date);
+	var start = d.getTime();
+	var endDate = d.setMinutes(d.getMinutes() + 25);
+
+	var end = endDate;
+	var id = sess.userId;
+	userModel.deleteEvent(start, id, function (err, results) {
+		if (err) {
+			res.send(false);
+		} else {
+			res.send(true);
+		}});
+	
+
+});
+
 
 
 module.exports = router;

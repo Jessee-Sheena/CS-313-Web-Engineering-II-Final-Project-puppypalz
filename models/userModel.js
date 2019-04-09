@@ -64,10 +64,10 @@ function getEvents(callback) {
 
 }
 function insertEvent(start, end, id, callback) {
-	
-	
+	var date = new Date(start);
+	console.log(date);
 	var event_url = '';
-	var event_class = "event_important";
+	var event_class = "event-important";
 	query = "SELECT id, dog_name FROM dog WHERE dog_owner='" + id + "';";
 	pool.query(query, function (err, result) {
 		if (err) {
@@ -80,7 +80,7 @@ function insertEvent(start, end, id, callback) {
 
 			var dog_name = result.rows[0].dog_name;
 			console.log(dog_name);
-			var title = "walking " + dog_name;
+			var title = "walking " + dog_name + " on " + date;
 			insertTheEvent(title, event_url, event_class, start, end, id, dog_id, function (err, result) { });
 			callback(null, result);
 			
@@ -105,10 +105,42 @@ function insertTheEvent(title, event_url, event_class, start, end, id, dog_id, c
 	});
 
 }
+function validateEvent(day, callback) {
+	query = "SELECT id,  event_start as start FROM event WHERE event_start =" + day + " ;"
+	pool.query(query, function (err, result) {
+		if (err) {
+			console.log("Error in query: ");
+			console.log(err);
+		} else {
+
+			callback(null, result);
+		}
+
+
+	})
+
+}
+function deleteEvent(start, id, callback) {
+	
+	query = "DELETE FROM event WHERE person_id='" + id + "' AND event_start=" + start + ";";
+	pool.query(query, function (err, result) {
+		if (err) {
+			console.log("Error in query: ");
+			console.log(err);
+		}
+		else {
+			callback(null, result);
+		}
+
+	});
+
+}
 module.exports = {
 	insertUser: insertUser,
 	insertDog: insertDog,
 	validateUser: validateUser,
 	getEvents: getEvents,
-	insertEvent: insertEvent
+	insertEvent: insertEvent,
+	validateEvent: validateEvent,
+	deleteEvent: deleteEvent
 };

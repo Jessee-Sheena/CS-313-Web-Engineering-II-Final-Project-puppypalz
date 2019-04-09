@@ -33,11 +33,9 @@
                 <!--<li id="menu">Menu</li>-->
                 <li class="listItems" id="signout">Sign Out</li>
                 <li class="listItems" id="about">About Me </li>
-                <li class="listItems" id="faq">FAQ </li>
-                <li class="listItems" id="rates"> Rates </li>
+                <li class="listItems" id="faq">FAQ/Rates </li>
                 <li class="listItems" id="setUp"> Set Up Walking Appointment</li>
-               <!--<li class="listItems" id="cat"> Cat sitting </li>-->
-                <li class="listItems" id="dogSit"> Dog Sitting </li>
+               
 
             </ul>
         </div>
@@ -52,28 +50,46 @@
 		      <div id="calendarContainer">
 			      <h2>Chloe's Dog Walking Appointment Schedular</h2>
 			      <button class ="setButtons" id="schedule" type="button">Schedule Appointment</button>
+				  <button class ="setButtons" id="cancel" type="button">Cancel Appointment</button>
 			      <button class ="setButtons" id="month" type="button">Monthly View</button>
 			      <button class ="setButtons" id="week" type="button">Weekly View</button>
 			      <button class ="setButtons" id="day" type="button">Daily View</button>
 				  <div id="appointmentForm">
-			        <form action="/insertEvent" method="post">
+			        <form id="appForm" action="/insertEvent" method="post">
 			           <h3>Select Date For Walk</h3>					  
 			           <input type="date" id="date" name="date">
 					   <h3>Select the time of the walk</h3>
-			           <input type="radio" id="time1" name="time" value="4:00">
+			           <input type="radio" id="time1" name="time" value="16:00">
 			           <label for="time1">4:00 - 4:25</label>
-			           <input type="radio" id="time2" name="time" value="4:30">
-			           <label for="time1">4:30 - 4:55</label>
-			           <input type="radio" id="time3" name="time" value="5:00">
-			           <label for="time1">5:00 - 5:25</label><br>
+			           <input type="radio" id="time2" name="time" value="16:30">
+			           <label for="time2">4:30 - 4:55</label>
+			           <input type="radio" id="time3" name="time" value="17:00">
+			           <label for="time3">5:00 - 5:25</label><br>
 					   <button type="submit">Schedule Walk</button>
-			     </form>
-			  </div>
+			        </form>
+                  </div>
+				  <div id="cancelAppointment">
+			        <form id="cancelForm" action="/deleteEvent" method="post">
+			           <h3>Select Date Of Walk To Cancel</h3>					  
+			           <input type="date" id="canceldate" name="date">
+					   <h3>Select the time of the walk</h3>
+			           <input type="radio" id="canceltime1" name="time" value="16:00">
+			           <label for="canceltime1">4:00 - 4:25</label>
+			           <input type="radio" id="canceltime2" name="time" value="16:30">
+			           <label for="canceltime2">4:30 - 4:55</label>
+			           <input type="radio" id="canceltime3" name="time" value="17:00">
+			           <label for="canceltime3">5:00 - 5:25</label><br>
+					   <button type="submit">Cancel Walk</button>
+			        </form>
+				 </div>
+				 <div id="validateEvent">
+				 </div>
+			  
 		         <div id="calendar"></div>
-		      </div>
+		      </div>			 
 			 
-			  <div id="petContainer">
-		         <div id="petCollage">
+			  <div class="petContainer">
+		         <div class="petCollage">
                     <img src="image/dog3.jpg" id="dogImg3" alt="a dog" />
                     <img src="image/cat1.jpg" id="catImg1" alt="a cat" />
                     <img src="image/cat2.jpg" id="catImg2" alt="a cat" />
@@ -81,12 +97,45 @@
                     <img src="image/dog2.jpg" id="dogImg2" alt="a dog" />
 					</div>
               </div>
-           </div>    
-       </div>
-	   
+           </div> 
+		</div>
+	<div id="aboutMe">
+	    <div id="aboutMeContainer">
+	        <img src="image/dog1.jpg" id="aboutdogImg1" alt="a dog" />
+	        <div id="aboutMeInfo">               
+	           <h1> Chloe Jessee</h1>
+	           <p> I LOVE PETS! I am excited to get to know yours. Here is a little about me. I am twelve years old, and I am an entrepreneur. I wanted to start a buisiness that would let me interact with pets. So I decided to try walking dogs. I am good with animals, and they usually love me. I am confident that I will be able to create a bond with your dog as we go on walks.  So go ahead and give me a chance, book an appointment today! <span class="listItems" id="setUp" style="color: blue" > Set Up Walking Appointment</sapn> </p>
+	       </div>
+	       <img src="image/cat1.jpg" id="aboutcatImg1" alt="a cat" />
+	    </div>
+	</div>	
+	<div id="faqs">
+	   <div id="faqsContianer">
+           <div id="theFaqs">
+	         <h2>What are my rates?</h2>
+		     <p>$5.00 for single dog per 25 minute walk</p>
+		     <p>$3.50 per dog for multiple dogs from same household.<p>
+		     <h2>How do you pay me?</h2>
+		     <p>I will accept cash after I complete the walk. In the future other payment options will be made available.<p>
+		     <h2>What size of dog will I walk?</h2>
+		     <p>Due to my age and size, I am only able to walk small to medium dogs at this time</p>
+		     <h2>Where Will I walk your dog?</h2>
+		     <p>I will stay within a 12 minute radius of your home<p>  
+		</div>
+		  <div class="petContainer">		
+		     <div class="petCollage">
+                <img src="image/dog3.jpg" id="dogImg3" alt="a dog" />
+                <img src="image/cat1.jpg" id="catImg1" alt="a cat" />
+                <img src="image/cat2.jpg" id="catImg2" alt="a cat" />
+                <img src="image/dog1.jpg" id="dogImg1" alt="a dog" />
+                <img src="image/dog2.jpg" id="dogImg2" alt="a dog" />
+		     </div>
+         </div>
+
+	   </div>
+	</div>
        
     </main>
 
 </body>
-
 </html>

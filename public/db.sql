@@ -20,8 +20,8 @@ id SERIAL NOT NULL PRIMARY KEY,
 title VARCHAR(80),
 url VARCHAR(80),
 class VARCHAR(80),
-start float,
-end float,
+event_start float,
+event_end float,
 dog_id INT REFERENCES person(id),
 person_id INT REFERENCES person(id)
 );
